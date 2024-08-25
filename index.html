@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100px;
+            /* Remove up and down arrows */
+            -moz-appearance: textfield;
+        }
+        /* Remove up and down arrows in Webkit browsers */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Random Number Generator</h1>
+        
+        <input type="number" id="min" placeholder="Min" inputmode="numeric">
+        <input type="number" id="max" placeholder="Max" inputmode="numeric">
+        <br>
+        <button onclick="generateRandomNumber()">Generate</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateRandomNumber() {
+            var min = parseInt(document.getElementById('min').value);
+            var max = parseInt(document.getElementById('max').value);
+            if (!isNaN(min) && !isNaN(max) && min <= max) {
+                var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                document.getElementById('result').textContent = "Number: " + randomNumber;
+            } else {
+                document.getElementById('result').textContent = "Please enter valid numbers!";
+            }
+        }
+    </script>
+
+</body>
+</html>
